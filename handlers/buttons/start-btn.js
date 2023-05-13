@@ -3,8 +3,7 @@ const { Keyboard } = require("telegram-keyboard");
 
 module.exports = async (ctx) => {
   const keyboard = Keyboard.make([
-    ["/images", "/manga"], // First row
-    ["/help"], // Second row
+    ["/images", "/videos"], // First row
   ]);
   ctx.replyWithMarkdown(
     "Hi, " +
