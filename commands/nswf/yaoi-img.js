@@ -1,15 +1,8 @@
 const { Telegraf } = require("telegraf");
 const { message } = require("telegraf/filters");
-const axios = require("axios");
+const r34API = require("r34.api");
 
 module.exports = async (ctx) => {
-  axios
-    .get("https://api.night-api.com/images/nsfw/yaoi", {
-      headers: {
-        authorization: process.env.NIGHT_API_TOKEN,
-      },
-    })
-    .then(function (response) {
-      return ctx.replyWithPhoto(response.data.content.url);
-    });
+  let image = await r34API.rule34(["yaoi"]);
+  return ctx.replyWithPhoto(image.replace(/"/gi, ""));
 };
