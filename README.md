@@ -12,5 +12,5 @@ git clone https://github.com/zachey01/nswf-tg-bot.git
 npm i
 ```
 
-Get Telegram bot token and put it in the .env file, for example: `TELEGTAM_TOKEN=111111111:ABCDEFI`.
+Get Telegram bot token and put it in the .env file, for example: `TELEGTAM_TOKEN= 111111111:ABCDEFI`.
 Then run the command `node index`.
