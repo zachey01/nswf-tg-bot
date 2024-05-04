@@ -1,9 +1,12 @@
-const { Telegraf } = require("telegraf");
-const { message } = require("telegraf/filters");
-const axios = require("axios");
+const nswfparse = require("nswfparse");
 
 module.exports = async (ctx) => {
-  axios.get("https://api.waifu.pics/nsfw/trap", {}).then(function (response) {
-    return ctx.replyWithPhoto(response.data.url);
-  });
+  nswfparse.reddit.hentai
+    .femboy()
+    .then((payload) => {
+      return ctx.replyWithPhoto(payload.url);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };

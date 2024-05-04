@@ -1,8 +1,12 @@
-const { Telegraf } = require("telegraf");
-const { message } = require("telegraf/filters");
-const r34API = require("r34.api");
+const nswfparse = require("nswfparse");
 
 module.exports = async (ctx) => {
-  let image = await r34API.rule34(["yaoi"]);
-  return ctx.replyWithPhoto(image.replace(/"/gi, ""));
+  nswfparse.reddit.hentai
+    .yaoi()
+    .then((payload) => {
+      return ctx.replyWithPhoto(payload.url);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };

@@ -1,13 +1,12 @@
-const axios = require("axios");
+const nswfparse = require("nswfparse");
 
 module.exports = async (ctx) => {
-  axios
-    .get("https://api.night-api.com/images/nsfw/hentai", {
-      headers: {
-        authorization: process.env.NIGHT_API_TOKEN,
-      },
+  nswfparse.reddit.hentai
+    .hentai()
+    .then((payload) => {
+      return ctx.replyWithPhoto(payload.url);
     })
-    .then(function (response) {
-      return ctx.replyWithPhoto(response.data.content.url);
+    .catch((error) => {
+      console.error(error);
     });
 };
